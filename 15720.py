@@ -28,4 +28,4 @@ for i in range(max(firstLine)): # 리스트 요소 더할 리스트
 oldSum -= ans # 이전 값에 답 변수를 빼면 세트가 되지 않는 값이 도출
 ans *= 0.9 # 세트가 완성된 변수에 0.9 곱하면 할인 된 값
 ans+=oldSum # 세트가 완성되지 않은 변수 + 완성되고 할인 된 값
-print(int(ans)) #출 력
+print(int(ans)) #출력
