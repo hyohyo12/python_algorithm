@@ -21,4 +21,6 @@
 # 	temp = []
 
 # print(f"{arr[0]}{arr[-1]}")
-print(None+5)
+
+if (3%3):
+    print(1)

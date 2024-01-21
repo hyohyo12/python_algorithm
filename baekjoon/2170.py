@@ -25,5 +25,5 @@ if __name__ == "__main__":
     seq = []
     n = int(input())
     for i in range(n):
-        seq.append(list(map(int,input().split())))
+        seq.append(tuple(map(int,input().split())))
     print(tot_line(seq,n))
