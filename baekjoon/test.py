@@ -1,3 +1,2 @@
-a = {}
-a['a'] += 1
-print(a['a'])
+if 0:
+    print(3)
