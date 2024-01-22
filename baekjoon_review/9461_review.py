@@ -9,4 +9,3 @@ if __name__ == "__main__":
     nums = side()
     for i in range(int(input())):
         print(nums[int(input())])
-    
