@@ -1,1 +1,2 @@
-print(0/2)
+if 1:
+    print(1)

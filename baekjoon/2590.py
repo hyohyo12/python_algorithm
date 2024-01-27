@@ -22,25 +22,24 @@ def minimum(seq:list[int])->int:
         area = 36 - min(seq[3],4)*9
         if seq[3] >= 4:
             seq[3] -= 4
-            count+=1
             area = 0
         elif seq[3] == 3:
-            seq[3] -= 3
             area -= min(seq[2],1)*4
+            seq[3] -= 3
             seq[2] = max(seq[2]-1,0)
         elif seq[3] == 2:
-            area = min(seq[2],3)*4
+            area -= min(seq[2],3)*4
             seq[3] -= 2
             seq[2] = max(seq[2]-3,0)
         else:
-            area -= min(5,seq[2])*2
+            area -= min(5,seq[2])*4
             seq[3] -= 1
             seq[2] = max(seq[2]-5,0)
         seq[1] = max(seq[1]-area,0)
         count += 1
     
     while seq[2]:
-        area = 36 - min(9,seq[i])*4
+        area = 36 - min(9,seq[2])*4
         seq[2] = max(seq[2]-9,0)
         seq[1] = max(seq[1]-area,0)
         count += 1
