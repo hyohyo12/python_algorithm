@@ -22,7 +22,7 @@ def passwd(seq:list[str],l:int,c:int,cur:list[str],c_count:int,v_count:int,visit
             visited[i] = False
 
 
-s
+
 if __name__ == "__main__":
     import sys
     read = sys.stdin.readline
