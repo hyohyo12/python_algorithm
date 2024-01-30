@@ -53,7 +53,3 @@ def minimum(seq:list[int])->int:
 if __name__ == "__main__":
     import sys
     input = sys.stdin.readline
-    seq = [0]
-    for i in range(6):
-        seq.append(int(input()))
-    print(minimum(seq))
