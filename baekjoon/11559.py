@@ -86,8 +86,3 @@ if __name__ == "__main__":
         else:
             ans += 1
     print(ans)
-
-
-
-
-
