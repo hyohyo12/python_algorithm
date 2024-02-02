@@ -16,3 +16,4 @@ if __name__ == "__main__":
     print(''.join(stack[:len(stack)-k])) #탐색을 마치더라도 k가 0이 아닐 수 있음 그래서 빼주고 출력한다.
     
     
+
