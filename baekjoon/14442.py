@@ -19,7 +19,7 @@ def bfs(graph:list[list[int]], n:int,m:int,k:int)->int:
                     visited[ny][nx][z] = visited[y][x][z] + 1
                     q.append((ny,nx,z))
                 elif graph[ny][nx] == 1  and z<k and visited[ny][nx][z+1] == 0:
-                    visited[ny][nx][z+1] = visited[y][x][z] + 1
+                    visited[ny][nx][z+1] = visited[y][x][z] + 1 
                     q.append((ny,nx,z+1))
     return -1
 
