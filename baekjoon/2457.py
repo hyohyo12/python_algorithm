@@ -28,7 +28,6 @@
 #         count += 1 #정답 갱신
 #     print(0 if end_date < 1201 else count) #마지막 탐색한 꽃의 지는날이 1201 보다 작다면 0을 print 크거나 같다면 count(정답 변수)를 print
 
-
 from collections import deque
 import sys
 input = sys.stdin.readline
@@ -46,6 +45,8 @@ if __name__ == "__main__":
     
     flowers = deque(flowers) #flowers 를 큐로 변환한다.
     end_date = 301 
+    flowers = deque(flowers)
+    end_date = 301
     count = 0
     while flowers:
         if end_date >= 1201 or end_date < flowers[0][0]:
