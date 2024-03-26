@@ -1,6 +1,3 @@
-<<<<<<< Updated upstream
-print(12//6)
-=======
 # import sys
 # from collections import deque
 # input = sys.stdin.readline
@@ -62,4 +59,3 @@ print(12//6)
 #             else:
 #                 print(-1)
 print(5%4)
->>>>>>> Stashed changes

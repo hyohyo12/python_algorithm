@@ -24,5 +24,4 @@ for i in range(n-7):
                         black += 1
         temp.append(white)
         temp.append(black)
-               
 print(min(temp))

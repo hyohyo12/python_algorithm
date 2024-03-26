@@ -34,5 +34,4 @@ if __name__ == "__main__":
     m,n = map(int,input().split())
     #seq->각 과자 길이 저장
     seq = list(map(int,input().split()))
-    
     print(sol(seq,n,m))

@@ -17,6 +17,15 @@ def turn(d):
 
 def when_end(n:int,board:list[list[int]],trans_timing:defaultdict(str))->int:
     #오른쪽,아래,왼쪽,위 순으로 만약 왼쪽으로 가고있다면 'D'일때 현재 방향 -1 이므로 위로 'L'이면 +1이므로 위로
+def turn(d):
+    global direction
+    if d == 'L':
+        direction = (direction+1)%4
+    elif d == 'D':
+        direction = (direction-1)%4
+    # else:return
+
+def when_end(n:int,board:list[list[int]],trans_timing:defaultdict(str))->int:
     dx = [1,0,-1,0]
     dy = [0,-1,0,1]
     x,y = 0,0
@@ -56,6 +65,7 @@ def when_end(n:int,board:list[list[int]],trans_timing:defaultdict(str))->int:
             board[p_y][p_x] = 0
             #위치 변환 확인
             if trans_timing[count] != "":#defaultdict로 선언했기에 현재 방향 전환하지 않는다면 ""을 저장함.
+            if trans_timing[count] != "":
                 turn(trans_timing[count])
         else:
             break
@@ -76,7 +86,7 @@ if __name__ == "__main__":
     #방향 변환 횟수
     l = int(input())
     #방향 변환 정보 저장할 딕셔너리(오름차순으로 입력)
-    trans_timing = defaultdict(str) #defaultdict로 메모리를 좀 더 차지하지만, 매번 해당값이 있는지 확인 하지 않아도 되므로 사용.
+    trans_timing = defaultdict(str)
     for _ in range(l):
         #x -> 방향 변환할 시간, c -> 변환될 방향 L:왼쪽 ,D:오른쪽 각각 90도씩
         x,c = input().strip().split()
@@ -84,5 +94,6 @@ if __name__ == "__main__":
     #현재 방향을 나타내는 변수
     direction = 0
     
+    ]]
     #함수 실행 및 정답 출력
     print(when_end(n,board,trans_timing))
