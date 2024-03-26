@@ -2,6 +2,21 @@ import sys
 from collections import deque,defaultdict
 input = sys.stdin.readline
 
+#오른쪽 왼쪽 움직이는 함수
+def turn(d):
+    #방향을 말해주는 글로벌 변수
+    global direction
+    #왼쪽
+    if d == 'L':
+        #현재 방향(인덱스)에서 +1
+        direction = (direction+1)%4
+    #오른쪽
+    elif d == 'D':
+        #현재 방향(인덱스)에서 -1
+        direction = (direction-1)%4
+
+def when_end(n:int,board:list[list[int]],trans_timing:defaultdict(str))->int:
+    #오른쪽,아래,왼쪽,위 순으로 만약 왼쪽으로 가고있다면 'D'일때 현재 방향 -1 이므로 위로 'L'이면 +1이므로 위로
 def turn(d):
     global direction
     if d == 'L':
@@ -36,7 +51,7 @@ def when_end(n:int,board:list[list[int]],trans_timing:defaultdict(str))->int:
             #뱀의 몸 길이 갱신
             snake.append((y,x))
             #위치 변환 확인
-            if trans_timing[count] != "":
+            if trans_timing[count] != "":#defaultdict로 선언했기에 현재 방향 전환하지 않는다면 ""을 저장함.
                 turn(trans_timing[count])
         #현재 위치에 사과가 없다면
         elif board[y][x] == 0:
@@ -49,6 +64,7 @@ def when_end(n:int,board:list[list[int]],trans_timing:defaultdict(str))->int:
             #현재 꼬리 위치 갱신
             board[p_y][p_x] = 0
             #위치 변환 확인
+            if trans_timing[count] != "":#defaultdict로 선언했기에 현재 방향 전환하지 않는다면 ""을 저장함.
             if trans_timing[count] != "":
                 turn(trans_timing[count])
         else:
@@ -78,4 +94,6 @@ if __name__ == "__main__":
     #현재 방향을 나타내는 변수
     direction = 0
     
+    ]]
+    #함수 실행 및 정답 출력
     print(when_end(n,board,trans_timing))
