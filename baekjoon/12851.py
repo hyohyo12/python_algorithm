@@ -1,21 +1,32 @@
 from collections import deque
-max = 100000
-def bfs(n,k):
-    dist = [0]*(max+1)
+import sys
+input = sys.stdin.readline
+
+
+def bfs(n:int,k:int):
+    visited = [0 for _ in range(100001)]
     count = 0
-    tmp = 0
-    q = deque([n])
+    start = n
+    result = 0
+    q = deque([start])
     while q:
         x = q.popleft()
+        tmp = visited[x]
         if x == k:
-            print(dist[x])
+            result = tmp
             count += 1
-            break
-        for i in (x+1,x-1,x*2):
-            if 0 <= i <= max and dist[i] == 0:
-                dist[i] = dist[x] + 1
+            continue
+        for i in [x-1,x+1,x*2]:
+            if 0 <= i < 100001 and (visited[i] == 0 or visited[i] == visited[x]+1):
                 q.append(i)
-    print(count)
-if __name__ == "__main__":
+                visited[i] = visited[x] + 1
+    return result,count
+def main():
     n,k = map(int,input().split())
-    bfs(n,k)
+    for i in bfs(n,k):
+        print(i)
+
+
+
+if __name__ == "__main__":
+    main()
