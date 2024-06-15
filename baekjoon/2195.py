@@ -6,7 +6,7 @@ def low_copy(s:str,p:str)->int:
         while c_index < len(s) and index+cur < len(p):
             if s[c_index] == p[index+cur]:
                 cur += 1
-                max_len = max(cur,max_len)
+                max_len = max(max_len,cur)
             else:
                 cur = 0
             c_index += 1
