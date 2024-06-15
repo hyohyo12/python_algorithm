@@ -1,3 +1,5 @@
+#분기 한정 기법
+#실패 (시간 초과)
 import sys
 from collections import defaultdict
 sys.setrecursionlimit(10**9)
@@ -7,28 +9,45 @@ res = 0
 def max_movement(board:list[list[int]],n:int,table:defaultdict[int]):
     global res
     res = 0
+    #하, 상 , 좌, 우 방향 리스트
     dx = [0,0,-1,1]
     dy = [1,-1,0,0]
+    #중복 방문 방지를 위한 방문 리스트
     visited = [[False for _ in range(n)] for _ in range(n)]
+    #dfs 함수
     def dfs(cur,y,x):
+        #최고 이동 거리를 저장할 변수 res
         global res
+        #res를 항상 최신화 시킨다
         res = max(res,cur)
+        #현재 위치의 나무보다 큰 나무의 개수 + 현재 판다의 이동거리가 res보다 작거나 같으면 탐색을 종료한다.
         if table[board[y][x]] + cur <= res:
             return
+        #하,상,좌,우 4방향 탐색
         for i in range(4):
+            #nx,ny 다음 위치
             nx = x + dx[i];ny = y + dy[i]
+            #인덱스 에러 방지와 중복 방문 검사
             if 0 <= nx < n and 0 <= ny < n and not visited[ny][nx]:
+                #현재 나무의 크기보다 다음 나무가 커야 하므로 검사
                 if board[ny][nx] > board[y][x]:
+                    #다음 노드의 방문 처리 후 재귀호출
                     visited[ny][nx] = True
+                    #cur(depth) + 1 한 뒤 dfs재귀 호출
                     dfs(cur+1,ny,nx)
+                    #다음 탐색을 위해 방문 방문리스트 원상복귀
                     visited[ny][nx] = False
+    #board 순회하며 dfs
     for i in range(n):
         for j in range(n):
+            #현재 나무보다 큰 나무의 개수가 res보다 크거나 작다면 최신화 할 수 없으므로 탐색 하지 않음
             if table[board[i][j]] <= res:
                 continue
+            #방문 처리후 dfs시작
             visited[i][j] = True
             dfs(1,i,j)
             visited[i][j] = False
+    #결과값 (판다 이동 거리 최댓값) 반환
     return res
 #메인 함수
 def main():
